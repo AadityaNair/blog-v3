@@ -1,0 +1,44 @@
+---
+import { getCollection, render } from "astro:content";
+import "../../styles/global.css";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blogs");
+  return posts.map((post) => ({
+    params: { id: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{post.data.title} - Aaditya Nair</title>
+  </head>
+  <body class="min-h-screen max-w-2xl mx-auto px-4 py-12">
+    <a href="/blog" class="text-gray-500 hover:text-gray-700 text-sm">&larr; Back to blog</a>
+    <article class="mt-6">
+      <h1 class="text-4xl font-bold">{post.data.title}</h1>
+      <time class="text-gray-400 text-sm mt-2 block">
+        {post.data.date.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+      </time>
+      {post.data.tags.length > 0 && (
+        <div class="flex gap-2 mt-3">
+          {post.data.tags.map((tag) => (
+            <a href={`/blog/tag/${tag}`} class="text-xs bg-gray-100 text-gray-600 hover:bg-gray-200 px-2 py-0.5 rounded">{tag}</a>
+          ))}
+        </div>
+      )}
+      <div class="prose mt-8">
+        <Content />
+      </div>
+    </article>
+  </body>
+</html>
