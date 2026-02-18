@@ -1,5 +1,5 @@
 ---
-
+import "../styles/global.css";
 ---
 
 <html lang="en">
@@ -9,9 +9,19 @@
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Aaditya Nair</title>
 	</head>
-	<body>
-		<h1>Astro</h1>
+	<body class="min-h-screen flex items-center justify-center">
+		<div class="flex flex-col items-center text-center">
+			<img
+				src="/photo.jpg"
+				alt="Aaditya Nair"
+				class="w-40 h-40 rounded-full object-cover mb-6"
+			/>
+			<h1 class="text-4xl font-bold">Hi, I'm Aaditya Nair</h1>
+			<p class="text-lg text-gray-500 mt-2">
+				Software engineer who loves building things for the web.
+			</p>
+		</div>
 	</body>
 </html>
