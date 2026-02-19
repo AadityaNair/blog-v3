@@ -5,11 +5,14 @@ import tailwindcss from '@tailwindcss/vite';
 
 import mdx from '@astrojs/mdx';
 
+import cloudflare from '@astrojs/cloudflare';
+
 // https://astro.build/config
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
 
-  integrations: [mdx({ extensions: ['.md', '.mdx'] })]
+  integrations: [mdx({ extensions: ['.md', '.mdx'] })],
+  adapter: cloudflare()
 });
