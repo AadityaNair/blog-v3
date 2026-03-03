@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 .prose {
   line-height: 1.75;
 }
@@ -26,6 +28,10 @@
   text-decoration: underline;
 }
 
+.dark .prose a {
+  color: #60a5fa;
+}
+
 .prose ul,
 .prose ol {
   margin-top: 1.25em;
@@ -48,6 +54,10 @@
   border: 1px solid #e5e7eb;
 }
 
+.dark .prose img {
+  border-color: #374151;
+}
+
 .prose pre {
   margin-top: 2em;
   margin-bottom: 2em;
@@ -65,10 +75,18 @@
   border-radius: 0.25rem;
 }
 
+.dark .prose :not(pre) > code {
+  background: #374151;
+}
+
 .prose hr {
   margin-top: 2.5em;
   margin-bottom: 2.5em;
   border-color: #e5e7eb;
+}
+
+.dark .prose hr {
+  border-color: #374151;
 }
 
 .prose blockquote {
@@ -77,4 +95,9 @@
   padding-left: 1em;
   border-left: 3px solid #d1d5db;
   color: #6b7280;
+}
+
+.dark .prose blockquote {
+  border-left-color: #4b5563;
+  color: #9ca3af;
 }
