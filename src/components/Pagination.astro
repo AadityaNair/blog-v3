@@ -1,0 +1,32 @@
+---
+interface Props {
+  page: {
+    url: {
+      prev: string | undefined;
+      next: string | undefined;
+    };
+    currentPage: number;
+    lastPage: number;
+  };
+}
+
+const { page } = Astro.props;
+---
+
+{page.lastPage > 1 && (
+  <nav class="grid grid-cols-3 items-center mt-12 text-sm">
+    <div class="text-left">
+      {page.url.prev && (
+        <a href={page.url.prev} class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">&larr; Previous</a>
+      )}
+    </div>
+    <div class="text-center">
+      <span class="text-gray-400 dark:text-gray-500">Page {page.currentPage} of {page.lastPage}</span>
+    </div>
+    <div class="text-right">
+      {page.url.next && (
+        <a href={page.url.next} class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">Next &rarr;</a>
+      )}
+    </div>
+  </nav>
+)}
