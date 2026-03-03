@@ -72,6 +72,10 @@
   background-color: #f6f8fa !important;
 }
 
+.dark .prose pre.astro-code {
+  background-color: var(--shiki-dark-bg) !important;
+}
+
 .prose :not(pre) > code {
   font-size: 0.875em;
   background: #f3f4f6;
