@@ -14,8 +14,14 @@
 </button>
 
 <script is:inline>
+  function updateFavicon(isDark) {
+    var link = document.querySelector('link[rel="icon"]');
+    if (link) link.href = isDark ? '/favicon-light.svg' : '/favicon.svg';
+  }
+  updateFavicon(document.documentElement.classList.contains('dark'));
   document.getElementById('theme-toggle').addEventListener('click', () => {
-    const isDark = document.documentElement.classList.toggle('dark');
+    var isDark = document.documentElement.classList.toggle('dark');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    updateFavicon(isDark);
   });
 </script>
