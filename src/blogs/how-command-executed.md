@@ -12,7 +12,7 @@ So, the other day I decided to look around how a shell (like `zsh`) goes about e
 *Note*: This is basically me looking at [this] stack-overflow answer and drawing conclusions.
 
 This the setup command I used.
-```shell-session
+```shellsession
 $ cat | strace -f bash > /dev/null
 ```
 Let's look at this for a second, here. There are three parts to this command.

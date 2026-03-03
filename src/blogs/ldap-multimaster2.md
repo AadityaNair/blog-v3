@@ -30,7 +30,7 @@ You will need those.
 Setup **hostnames** for other servers. In each of the servers edit the `/etc/hosts` file and add the IPs and hostnames for
 both self and the other server. This allows us to refer each server by a hostname and not by their IP.
 
-```shell-session
+```shellsession
 $ cat /etc/hosts
 192.168.122.10 ldap1
 192.168.122.20 ldap2
@@ -58,7 +58,7 @@ On a systemd machine, you would accomplish this by a `systemctl enable pcsd.serv
 To create the cluster we need the nodes to be authenticated for use by pacemaker before creating the actual cluster.
 Pacemaker logs in by the `hacluster` user.
 
-```shell-session
+```shellsession
 ldap1 $ pcs cluster auth ldap1 ldap2 -u hacluster -p password # Auth
 
 ldap1 $ pcs cluster setup --name ldap_cluster ldap1 ldap2 # Actual cluster creation
@@ -71,7 +71,7 @@ It would make no difference.
 
 If everything went well, the cluster status should be similar to this:
 
-```shell-session
+```shellsession
 ldap1 $ pcs status
 Cluster name: ldap_cluster
 Stack: corosync
@@ -111,7 +111,7 @@ We will configure resources to switch IPs on failure and to stop and start 389-d
 Whenever a server goes down we need to make sure the other system gets the shared IP. Luckily, we have a default resource available to
 accomplish this.
 
-```shell-session
+```shellsession
 $ pcs resource create ldap_ip ocf:heartbeat:IPaddr2 ip=10.1.36.79 cidr_netmask=32 op monitor interval=10s
 ```
 
@@ -125,7 +125,7 @@ the directory be stopped before the IP switch and started after. Sadly, we don't
 I cooked up [two simple resources], one that stopped the directory and one that started it. Copy these to `/usr/lib/ocf/resource.d/nair`
 on both servers. Now create the resources:
 
-```shell-session
+```shellsession
 $ pcs resource create start_ldap ocf:nair:dirsrv_start
 $ pcs resource create stop_ldap ocf:nair:dirsrv_stop
 ```
@@ -138,7 +138,7 @@ Just creating a resource is not enough. We also have to make sure that these res
 - **Collocation constraints** are used to define where a resource will run with what priority. We use them to make sure that the directory
   restart is attempted only where the shared IP is now. No point in doing so on the other server.
 
-```shell-session
+```shellsession
 $ pcs constraint colocation add stop_ldap with ldap_ip INFINITY
 $ pcs constraint colocation add start_ldap with ldap_ip INFINITY
 ```
@@ -149,7 +149,7 @@ with `ldap_ip`, we need to know where `ldap_ip` is going to be beforehand, which
 - We use **Order Constraints** to impose an ordering on resources' start and stop actions.
   We need to make sure that `stop_ldap` happens before `ldap_ip` which itself happens before `start_ldap`.
 
-```shell-session
+```shellsession
 $ pcs constraint order stop_ldap then ldap_ip
 $ pcs constraint order ldap_ip then start_ldap
 ```
@@ -158,7 +158,7 @@ Again the commands are pretty self explanatory.
 
 Finally things should look like this.
 
-```shell-session
+```shellsession
 $  pcs constraint --full
 Location Constraints:
 Ordering Constraints:

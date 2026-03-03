@@ -71,15 +71,15 @@ SSL is important so that all connections to the directory are encrypted. This is
 where passwords are transferred. To set this up, I have used Parth Kolekar's [excellent post]. The commandline steps are outlined below.
 The aforementioned blog mentions more techniques.
 
-```shell-session
+```shellsession
 ldapX $ echo "Internal (Software) Token:password" > /etc/dirsrv/slapd-ldapX/pin.txt
 ldapX $ chmod 400 /etc/dirsrv/slapd-ldapX/pin.txt
 ```
 Restart the server and test using,
-```shell-session $ ldapsearch -x -b <base> -H <host> -ZZ ```
+```shellsession $ ldapsearch -x -b <base> -H <host> -ZZ ```
 
 To setup the certificates,
-```shell-session
+```shellsession
 ldapX $ openssl pkcs12 -export -inkey iiit.ac.in.key -in iiit.ac.in.crt -out /tmp/crt.pk12 -nodes -name 'Server-Cert' # Export to pkcs12 format
 ldapX $ pk12util -i /tmp/crt.pk12 -d /etc/dirsrv/slapd-ldapX/ # Import pkcs12 certificate
 ldapX $ certutil -d /etc/dirsrv/slapd-<instance>/ -A -n "My Local CA" -t CT,, -a -i /path/to/root/certificate.crt  # import root CA certificates.
@@ -105,7 +105,7 @@ Right-Click on `userRoot` and use the wizard to create a new replication agreeme
 Just note that once SSL has been setup, you need to use port 636 for connections rather than port 389.
 
 The setup is like this:
-```shell-session
+```shellsession
 ldap1 <-------------------> ldap2
 ```
 
@@ -118,7 +118,7 @@ create replication between `ldap-old` and one of servers in `ldapX`. This ensure
 and allows us keep using `ldap-old` till we are sure that everything is peachy.
 
 This should be the current replication scheme:
-```shell-session
+```shellsession
 ldap-old -------------------> ldap1 <----------------> ldap2
 ```
 
@@ -128,7 +128,7 @@ We will change the system configuration so that `ldap1`, in addition to its own 
 We also configure `ldap-old` with a new temporary IP so that we can still access it.
 In `ldap-old`,
 
-```shell-session
+```shellsession
 ldap-old $ ip addr add <temp-ip>/<subnet> dev eth0
 ldap-old $ exit
 $ ssh <temp-ip>
@@ -137,7 +137,7 @@ ldap-old $ ip addr delete <ldap-orig-ip>/<subnet> dev eth0
 
 While in `ldap1`, do this,
 
-```shell-session
+```shellsession
 ldap1 $ ip addr add <ldap-orig-ip>/<subnet> dev eth0
 ```
 
@@ -147,7 +147,7 @@ If all goes well, nothing should break. Try logging into accounts that athentica
 seamlessly. Now, if everything is working seamlessly, you would want that all modifications in `ldap1` to be replicated back to
 `ldap-old` so that once testing should finish and you move back, data is still fresh. Similar to above, create replication from
 one of `ldapX` to `ldap-old`. Use the temporary IP for `ladp-old`. The final replicaton scheme will look like this:
-```shell-session
+```shellsession
 ldap-old <-----------------> ldap1 <------------------> ldap2
 ```
 
