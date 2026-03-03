@@ -14,7 +14,7 @@ const { page } = Astro.props;
 ---
 
 {page.lastPage > 1 && (
-  <nav class="grid grid-cols-3 items-center mt-12 text-sm">
+  <nav class="grid grid-cols-3 items-center mt-12 text-sm max-w-2xl mx-auto w-full">
     <div class="text-left">
       {page.url.prev && (
         <a href={page.url.prev} class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">&larr; Previous</a>
