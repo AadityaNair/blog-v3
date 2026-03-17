@@ -30,6 +30,7 @@ const { tag } = Astro.params;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <title>Tag: {tag} - Aaditya Nair</title>
+    <meta name="description" content={`Blog posts tagged "${tag}" by Aaditya Nair.`} />
     <script is:inline>
       if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.documentElement.classList.add('dark');

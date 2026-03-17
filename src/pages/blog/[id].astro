@@ -22,6 +22,7 @@ const { Content } = await render(post);
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <title>{post.data.title} - Aaditya Nair</title>
+    <meta name="description" content={post.data.excerpt} />
     <script is:inline>
       if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.documentElement.classList.add('dark');
