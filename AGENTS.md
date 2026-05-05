@@ -15,5 +15,3 @@ Similarly, any colours we choose should work in both dark and light mode. The co
 
 We should commit every reasonably sized feature before moving on. So, during conversation if we move from one feature
 to the next, commit the changes before moving on. Provide proper title and full description of the change.
-
-Confirm before running any other command.
