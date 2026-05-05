@@ -14,9 +14,6 @@ Always ensure that any changes made also work for mobile. Content should look we
 Similarly, any colours we choose should work in both dark and light mode. The colour doesn't need to be the same.
 
 We should commit every reasonably sized feature before moving on. So, during conversation if we move from one feature
-to the next, confirm with the user and commit the changes if user agrees. Provide proper title and full description of
-the change.
+to the next, commit the changes before moving on. Provide proper title and full description of the change.
 
-Look at the commit history of bun.lock to check when it was last updated. If it was updated more than
-a month ago, remind user to update all dependencies using `bun update --latest`
 Confirm before running any other command.
