@@ -4,15 +4,23 @@
   aria-label="Toggle theme"
 >
   <!-- Sun icon (shown in dark mode) -->
-  <svg id="sun-icon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg id="sun-icon" class="w-5 h-5 sun-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <circle cx="12" cy="12" r="4" stroke-width="2" />
     <path stroke-linecap="round" stroke-width="2" d="M12 2v3M12 19v3M2 12h3M19 12h3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12" />
   </svg>
   <!-- Moon icon (shown in light mode) -->
-  <svg id="moon-icon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg id="moon-icon" class="w-5 h-5 moon-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.005 9.005 0 0012 21a9.005 9.005 0 008.354-5.646z" />
   </svg>
 </button>
+
+<style is:inline>
+  .sun-icon { display: none; }
+  .moon-icon { display: block; }
+
+  .dark .sun-icon { display: block; }
+  .dark .moon-icon { display: none; }
+</style>
 
 <script is:inline>
   function updateFavicon(isDark) {
