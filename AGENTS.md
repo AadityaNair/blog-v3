@@ -7,6 +7,15 @@ The default URL for this is `localhost:4321/`
 
 To check if the website builds itself properly, run `bun astro build` and look at the output.
 
+Always use tailwind utility classes instead of actual CSS wherever possible.
+Also, ideally avoid specifying exact sizes where possible and use standard tailwind sizes like xl, 2xl, etc.
+
+Always ensure that any changes made also work for mobile. Content should look weird/overflowed in mobile.
+
+We should commit every reasonably sized feature before moving on. So, during conversation if we move from one feature
+to the next, confirm with the user and commit the changes if user agrees. Provide proper title and full description of
+the change.
+
 Look at the commit history of bun.lock to check when it was last updated. If it was updated more than
 a month ago, remind user to update all dependencies using `bun update --latest`
 Confirm before running any other command.
