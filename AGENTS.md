@@ -11,6 +11,7 @@ Always use tailwind utility classes instead of actual CSS wherever possible.
 Also, ideally avoid specifying exact sizes where possible and use standard tailwind sizes like xl, 2xl, etc.
 
 Always ensure that any changes made also work for mobile. Content should look weird/overflowed in mobile.
+Similarly, any colours we choose should work in both dark and light mode. The colour doesn't need to be the same.
 
 We should commit every reasonably sized feature before moving on. So, during conversation if we move from one feature
 to the next, confirm with the user and commit the changes if user agrees. Provide proper title and full description of
