@@ -28,6 +28,12 @@
     if (link) link.href = isDark ? '/favicon-light.svg' : '/favicon.svg';
   }
   updateFavicon(document.documentElement.classList.contains('dark'));
+
+  // Add transition-colors after a small delay to avoid FOUC flash on load
+  setTimeout(() => {
+    document.body.classList.add('transition-colors');
+  }, 100);
+
   document.getElementById('theme-toggle').addEventListener('click', () => {
     var isDark = document.documentElement.classList.toggle('dark');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
