@@ -1,0 +1,5 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1920" height="1080" fill="#111827"/>
+  <path d="M1920 540L0 0V1080L1920 540Z" fill="#1F2937" fill-opacity="0.5"/>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="48" fill="#4B5563">Dark Mode Placeholder</text>
+</svg>
