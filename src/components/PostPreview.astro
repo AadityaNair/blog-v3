@@ -1,0 +1,27 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  post: CollectionEntry<"blogs">;
+  showTags?: boolean;
+}
+
+const { post, showTags = true } = Astro.props;
+---
+
+<li>
+  <a href={`/blog/${post.id}`} class="group block">
+    <h2 class="text-xl font-semibold group-hover:underline">{post.data.title}</h2>
+    <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">{post.data.excerpt}</p>
+    {showTags && post.data.tags.length > 0 && (
+      <div class="flex gap-2 mt-2">
+        {post.data.tags.map((tag) => (
+          <a href={`/blog/tag/${tag}`} class="text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 px-2 py-0.5 rounded">{tag}</a>
+        ))}
+      </div>
+    )}
+    <time class="text-gray-400 dark:text-gray-500 text-xs mt-1 block">
+      {post.data.date.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+    </time>
+  </a>
+</li>

@@ -1,71 +1,61 @@
 ---
-import "../styles/global.css";
-import ThemeToggle from "../components/ThemeToggle.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
-import ThemeScript from "../components/ThemeScript.astro";
 ---
 
-<html lang="en">
-	<head>
-		<ThemeScript />
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>About - Aaditya Nair</title>
-		<meta name="description" content="About Aaditya Nair - Software engineer currently working at Meta as a Production Engineer." />
-	</head>
-	<body class="homepage-body min-h-screen flex flex-col items-center py-12 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-		<ThemeToggle />
-		<SiteHeader />
-		<article class="max-w-4xl px-8 text-justify text-lg space-y-4">
-			<h1 class="text-3xl font-bold mb-6">About Me</h1>
-			<p>
-				Hi, I am <span class="homepage-name cursor-default" title="No, it just turns red. No link here">Aaditya M Nair</span>. I currently live in London, UK.
-			</p>
-			<p>
-				I am currently working for Facebook (or Meta) as a Production Engineer in the Host Management team.
-				My work is all about managing the company's millions of servers at scale. This involves overseeing
-				the configuration, health, and security of all of these servers as well as building features for the
-				ever growing needs of the service owners.
-			</p>
-			<p>
-				I used to work with
-				<a href="https://tower-research.com" class="text-blue-600 dark:text-blue-400 hover:underline">Tower Research Capital</a>
-				as a Software Engineer. There, I worked with the recently formed
-				Information Security team. Me and my team are responsible for making and
-				enforcing all policies related to security and compliance. We also
-				collaborate with other teams improve observability into the tools they
-				manage, identify and remediate any security bugs we find while also
-				promoting security by design on new projects. This was my first actual
-				job post college :-).
-			</p>
-			<p>
-				In College though, I was pursuing a Bachelors + Masters dual degree
-				program in Computer Science at
-				<a href="https://iiit.ac.in" class="text-blue-600 dark:text-blue-400 hover:underline">IIIT Hyderabad</a>.
-				For my Master's Thesis (for which I am required to publish a few
-				papers), I worked with
-				<a href="https://faculty.iiit.ac.in/~lalitha.v/" class="text-blue-600 dark:text-blue-400 hover:underline">Dr Lalitha Vadlamani</a>
-				on Erasure Codes. More specifically, I worked on Codes with Hierarchical
-				Locality. While in College, I was also part of the sysadmin team which
-				managed various services (including EMail, proxy, Identity) for about
-				3000 students and professors at any given time. It was probably this job
-				that sparked my interest in all things systems and networks.
-			</p>
-			<p>
-				I started this website to have kind of an online presence (and because
-				all the cool kids are doing it). This website is supposed to be the
-				landing site for anyone who wants to find out more about me. That is
-				pretty much why I wrote this page. I also started a blog where I will
-				(try to) document everything I am currently studying. There is a lot to
-				be said about jotting everything down. It requires you to have a clear
-				mental picture yourself which is very important with CS concepts in
-				general. It also acts as documentation for when you want to refer to it
-				in future. With that said, the posts can just be small snippets of
-				interesting code I found or it can also be an essay on some topic I
-				found interesting.
-			</p>
-		</article>
-	</body>
-</html>
+<BaseLayout
+	title="About - Aaditya Nair"
+	description="About Aaditya Nair - Software engineer currently working at Meta as a Production Engineer."
+	class="flex flex-col items-center py-12"
+>
+	<SiteHeader />
+	<article class="max-w-4xl px-8 text-justify text-lg space-y-4">
+		<h1 class="text-3xl font-bold mb-6">About Me</h1>
+		<p>
+			Hi, I am <span class="homepage-name cursor-default" title="No, it just turns red. No link here">Aaditya M Nair</span>. I currently live in London, UK.
+		</p>
+		<p>
+			I am currently working for Facebook (or Meta) as a Production Engineer in the Host Management team.
+			My work is all about managing the company's millions of servers at scale. This involves overseeing
+			the configuration, health, and security of all of these servers as well as building features for the
+			ever growing needs of the service owners.
+		</p>
+		<p>
+			I used to work with
+			<a href="https://tower-research.com" class="text-blue-600 dark:text-blue-400 hover:underline">Tower Research Capital</a>
+			as a Software Engineer. There, I worked with the recently formed
+			Information Security team. Me and my team are responsible for making and
+			enforcing all policies related to security and compliance. We also
+			collaborate with other teams improve observability into the tools they
+			manage, identify and remediate any security bugs we find while also
+			promoting security by design on new projects. This was my first actual
+			job post college :-).
+		</p>
+		<p>
+			In College though, I was pursuing a Bachelors + Masters dual degree
+			program in Computer Science at
+			<a href="https://iiit.ac.in" class="text-blue-600 dark:text-blue-400 hover:underline">IIIT Hyderabad</a>.
+			For my Master's Thesis (for which I am required to publish a few
+			papers), I worked with
+			<a href="https://faculty.iiit.ac.in/~lalitha.v/" class="text-blue-600 dark:text-blue-400 hover:underline">Dr Lalitha Vadlamani</a>
+			on Erasure Codes. More specifically, I worked on Codes with Hierarchical
+			Locality. While in College, I was also part of the sysadmin team which
+			managed various services (including EMail, proxy, Identity) for about
+			3000 students and professors at any given time. It was probably this job
+			that sparked my interest in all things systems and networks.
+		</p>
+		<p>
+			I started this website to have kind of an online presence (and because
+			all the cool kids are doing it). This website is supposed to be the
+			landing site for anyone who wants to find out more about me. That is
+			pretty much why I wrote this page. I also started a blog where I will
+			(try to) document everything I am currently studying. There is a lot to
+			be said about jotting everything down. It requires you to have a clear
+			mental picture yourself which is very important with CS concepts in
+			general. It also acts as documentation for when you want to refer to it
+			in future. With that said, the posts can just be small snippets of
+			interesting code I found or it can also be an essay on some topic I
+			found interesting.
+		</p>
+	</article>
+</BaseLayout>

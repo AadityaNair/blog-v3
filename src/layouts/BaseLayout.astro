@@ -1,0 +1,23 @@
+---
+import "../styles/global.css";
+import BaseHead from "../components/BaseHead.astro";
+import ThemeToggle from "../components/ThemeToggle.astro";
+
+interface Props {
+	title: string;
+	description: string;
+	class?: string;
+}
+
+const { title, description, class: className } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+	<body class:list={["homepage-body min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100", className]}>
+		<ThemeToggle />
+		<slot />
+	</body>
+</html>
