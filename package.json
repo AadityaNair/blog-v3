@@ -12,10 +12,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.9",
-    "@astrojs/mdx": "^7.0.3",
+    "@astrojs/check": "^0.9.10",
+    "@astrojs/mdx": "^7.0.8",
     "@tailwindcss/vite": "^4.3.3",
-    "astro": "^7.1.1",
+    "astro": "^7.2.7",
     "tailwindcss": "^4.3.3",
     "typescript": "^7.0.2"
   }
